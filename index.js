@@ -8,6 +8,13 @@ const {
   deleteStd,
   editStd,
 } = require("./Controllers/stdController");
+const {
+  getCourse,
+  addCourse,
+  getSingleCourse,
+  deleteCourse,
+  editCourse,
+} = require("./Controllers/courseControllers");
 
 require("dotenv").config();
 const app = express();
@@ -28,6 +35,7 @@ const connectDB = async () => {
 };
 connectDB();
 
+// student
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
@@ -36,6 +44,13 @@ app.post("/api/v1/std", addStd);
 app.get("/api/v1/std/:id", getSingleStd);
 app.delete("/api/v1/std/:id", deleteStd);
 app.put("/api/v1/std/:id", editStd);
+
+// Course
+app.get("/api/v1/course", getCourse);
+app.post("/api/v1/course", addCourse);
+app.get("/api/v1/course/:id", getSingleCourse);
+app.delete("/api/v1/course/:id", deleteCourse);
+app.put("/api/v1/course/:id", editCourse);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

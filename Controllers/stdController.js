@@ -1,5 +1,5 @@
 const { default: mongoose } = require("mongoose");
-const Student = require("../models/stdm");
+const Student = require("../models/stdmod");
 
 const addStd = async (req, res) => {
   const { name, email, age } = req.body;
@@ -56,4 +56,4 @@ const editStd = async (req, res) => {
   res.send({ message: "student updated", student: student });
 };
 
-module.exports = { addStd, getStd, getSingleStd, deleteStd,editStd };
+module.exports = { addStd, getStd, getSingleStd, deleteStd, editStd };
