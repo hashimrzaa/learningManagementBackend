@@ -1,7 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const { addStd, getStd, getSingleStd, deleteStd, editStd } = require("./Controllers/stdController");
+const {
+  addStd,
+  getStd,
+  getSingleStd,
+  deleteStd,
+  editStd,
+} = require("./Controllers/stdController");
 
 require("dotenv").config();
 const app = express();
