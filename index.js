@@ -1,4 +1,5 @@
 const express = require("express");
+import { Express } from "express";
 const cors = require("cors");
 const mongoose = require("mongoose");
 const {
@@ -13,11 +14,11 @@ require("dotenv").config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware
+// Hr Middleware
 app.use(cors());
 app.use(express.json());
 
-// MongoDB Connection
+// Hr Mongo Db
 const connectDB = async () => {
   try {
     const connectHrDb = await mongoose.connect(process.env.MONGO_URI);
