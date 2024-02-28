@@ -29,4 +29,31 @@ const getSingleStd = async (req, res) => {
   res.status(200).send({ student: student });
 };
 
-module.exports = { addStd, getStd, getSingleStd };
+const deleteStd = async (req, res) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res.status(404).send({ message: "no such student" });
+    return;
+  }
+  const student = await Student.findByIdAndDelete(id);
+  if (!student) {
+    res.status(404).send({ message: "user not found" });
+    return;
+  }
+  res.status(202).send({ message: "user deleted" });
+};
+const editStd = async (req, res) => {
+  const { id } = req.params;
+  const student = await Student.findByIdAndUpdate(id, { ...req.body });
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    res.status(404).send({ message: "no such student" });
+    return;
+  }
+  if (!student) {
+    res.send({ error: "no student found" });
+    return;
+  }
+  res.send({ message: "student updated", student: student });
+};
+
+module.exports = { addStd, getStd, getSingleStd, deleteStd,editStd };
