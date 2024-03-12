@@ -5,7 +5,7 @@ const courseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  timing: {
+  timing: { 
     type: String,
     required: true,
   },
